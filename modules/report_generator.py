@@ -325,10 +325,51 @@ HTML_REPORT_TEMPLATE = """<!DOCTYPE html>
     </div>
     {% endif %}
 
+    <!-- Categorical Statistics & Balance -->
+    {% if categorical.summary_table %}
+    <div class="card">
+      <h2>6. Categorical Feature Analysis & Class Balance</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Valid Obs</th>
+              <th>Distinct Classes</th>
+              <th>Dominant Mode</th>
+              <th>Mode Frequency</th>
+              <th>Mode %</th>
+              <th>Rare Classes (&lt;1%)</th>
+              <th>Distribution Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in categorical.summary_table %}
+            <tr>
+              <td><strong>{{ row.column_name | e }}</strong></td>
+              <td>{{ row.valid_count | e }}</td>
+              <td>{{ row.unique_categories | e }}</td>
+              <td><code>{{ row.mode_category | e }}</code></td>
+              <td>{{ row.mode_frequency | e }}</td>
+              <td>{{ row.mode_percentage | e }}%</td>
+              <td>{{ row.rare_categories_count | e }}</td>
+              <td>
+                {% if row.is_imbalanced %}<span class="badge badge-warning">Imbalanced (&ge;70%)</span>{% endif %}
+                {% if row.is_high_cardinality %}<span class="badge badge-info">High Card. (&gt;30)</span>{% endif %}
+                {% if not row.is_imbalanced and not row.is_high_cardinality %}<span class="badge badge-success">Balanced</span>{% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+
     <!-- Missing Values -->
     {% if missing.columns_with_missing_count > 0 %}
     <div class="card">
-      <h2>6. Missingness Analysis</h2>
+      <h2>7. Missingness Analysis</h2>
       <p style="font-size: 14px; margin-bottom: 12px;">
         Total Missing Cells: <strong>{{ missing.total_missing_cells | e }}</strong> 
         ({{ missing.overall_missing_percentage | e }}% of dataset). 
@@ -345,7 +386,7 @@ HTML_REPORT_TEMPLATE = """<!DOCTYPE html>
     <!-- Outlier Detection -->
     {% if outliers.summary_table %}
     <div class="card">
-      <h2>7. Outlier & Anomaly Analysis</h2>
+      <h2>8. Outlier & Anomaly Analysis</h2>
       <p style="font-size: 14px; margin-bottom: 12px;">
         Statistical detection via Tukey's IQR Method (1.5x Multiplier). 
         Features with outliers: <strong>{{ outliers.columns_with_outliers_count | e }}</strong>.
@@ -393,7 +434,7 @@ HTML_REPORT_TEMPLATE = """<!DOCTYPE html>
     <!-- Correlation Analysis -->
     {% if correlations.applied %}
     <div class="card">
-      <h2>8. Correlation & Relationship Analysis</h2>
+      <h2>9. Correlation & Relationship Analysis</h2>
       <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">{{ correlations.causation_disclaimer | e }}</p>
       {% if pearson_heatmap_html %}
       <div class="chart-container">
@@ -436,7 +477,7 @@ HTML_REPORT_TEMPLATE = """<!DOCTYPE html>
     <!-- Preprocessing Recommendations -->
     {% if recommendations %}
     <div class="card">
-      <h2>9. Preprocessing & Data Preparation Recipes</h2>
+      <h2>10. Preprocessing & Data Preparation Recipes</h2>
       <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">
         Actionable guidance tailored to the empirical distribution and structural hygiene of this dataset:
       </p>

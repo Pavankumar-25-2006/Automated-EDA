@@ -118,6 +118,10 @@ def create_missing_values_chart(missing_summary: List[Dict[str, Any]]) -> Option
 def create_distribution_chart(series: pd.Series, col_name: str) -> go.Figure:
     """Create an interactive histogram with marginal box plot for a numerical feature."""
     clean = series.dropna().astype(float)
+    clean = clean[np.isfinite(clean)]
+    if len(clean) == 0:
+        clean = pd.Series([0.0])
+
     fig = px.histogram(
         x=clean,
         marginal="box",
@@ -204,25 +208,55 @@ def create_correlation_heatmap(corr_matrix_dict: Dict[str, Dict[str, float]], me
 
 
 def create_scatter_plot(df: pd.DataFrame, x_col: str, y_col: str, r_val: float) -> go.Figure:
-    """Create a scatter plot for high-correlation pairs with trendline."""
+    """Create a scatter plot for high-correlation pairs with optional trendline."""
     clean_df = df[[x_col, y_col]].dropna().copy()
+    # Filter out non-finite
+    clean_df = clean_df[np.isfinite(clean_df[x_col]) & np.isfinite(clean_df[y_col])]
+
     if len(clean_df) > 2000:
-        # Sample for fast rendering while preserving distribution
         plot_df = clean_df.sample(2000, random_state=42)
         note = " (Sampled 2,000 pts for UI speed)"
     else:
         plot_df = clean_df
         note = ""
 
-    fig = px.scatter(
-        plot_df,
-        x=x_col,
-        y=y_col,
-        trendline="ols",
-        color_discrete_sequence=["#2563EB"],
-        opacity=0.6,
-        labels={x_col: x_col, y_col: y_col}
+    # Trendline only if sufficient points and variance
+    has_trendline = (
+        len(plot_df) >= 4
+        and plot_df[x_col].nunique() > 1
+        and plot_df[y_col].nunique() > 1
     )
+
+    try:
+        if has_trendline:
+            fig = px.scatter(
+                plot_df,
+                x=x_col,
+                y=y_col,
+                trendline="ols",
+                color_discrete_sequence=["#2563EB"],
+                opacity=0.6,
+                labels={x_col: x_col, y_col: y_col}
+            )
+        else:
+            fig = px.scatter(
+                plot_df,
+                x=x_col,
+                y=y_col,
+                color_discrete_sequence=["#2563EB"],
+                opacity=0.6,
+                labels={x_col: x_col, y_col: y_col}
+            )
+    except Exception:
+        fig = px.scatter(
+            plot_df,
+            x=x_col,
+            y=y_col,
+            color_discrete_sequence=["#2563EB"],
+            opacity=0.6,
+            labels={x_col: x_col, y_col: y_col}
+        )
+
     fig.update_layout(
         title=f"{x_col} vs {y_col} (r = {r_val:.2f}){note}",
         template=PLOT_THEME,

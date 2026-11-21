@@ -232,7 +232,7 @@ def generate_insights(
                     f"(Pearson r = {pair['pearson_corr']:.2f}, Spearman ρ = {pair['spearman_corr']:.2f}). "
                     "Increases in one correspond to linear increases in the other. Check for multicollinearity in regression models."
                 ),
-                "basis": f"Pearson r ({pair['pearson_corr']}) >= {pair['pearson_corr']} threshold."
+                "basis": f"Pearson r ({pair['pearson_corr']:.2f}) >= 0.70 threshold."
             })
 
         for pair in strong_neg[:5]:
@@ -244,7 +244,7 @@ def generate_insights(
                     f"Features '{pair['feature_a']}' and '{pair['feature_b']}' exhibit strong inverse correlation "
                     f"(Pearson r = {pair['pearson_corr']:.2f}, Spearman ρ = {pair['spearman_corr']:.2f})."
                 ),
-                "basis": f"Pearson r ({pair['pearson_corr']}) <= -0.70 threshold."
+                "basis": f"Pearson r ({pair['pearson_corr']:.2f}) <= -0.70 threshold."
             })
 
         if not strong_pos and not strong_neg:

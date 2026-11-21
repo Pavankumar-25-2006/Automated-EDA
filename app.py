@@ -3,6 +3,7 @@ AutoEDA — Advanced Automated Exploratory Data Analysis System
 Main Streamlit Application.
 """
 from pathlib import Path
+import hashlib
 import streamlit as st
 import pandas as pd
 
@@ -197,13 +198,24 @@ def main():
             """)
         return
 
-    # Execute Analysis
-    with st.spinner("Analyzing dataset structure, statistics, correlations, and hygiene..."):
-        try:
-            analysis = load_cached_analysis(df_bytes, file_name)
-        except Exception as e:
-            st.error(f"❌ Analysis Failed: {str(e)}")
-            return
+    # Execute Analysis with Smart Caching
+    data_hash = hashlib.sha256(df_bytes).hexdigest()
+    cache_key = (data_hash, file_name)
+
+    if (
+        "current_analysis" not in st.session_state
+        or st.session_state.get("current_cache_key") != cache_key
+    ):
+        with st.spinner("Analyzing dataset structure, statistics, correlations, and hygiene..."):
+            try:
+                analysis_obj = load_cached_analysis(df_bytes, file_name)
+                st.session_state["current_analysis"] = analysis_obj
+                st.session_state["current_cache_key"] = cache_key
+            except Exception as e:
+                st.error(f"❌ Analysis Failed: {str(e)}")
+                return
+
+    analysis = st.session_state["current_analysis"]
 
     # Top Metric Summary Cards
     col1, col2, col3, col4, col5 = st.columns(5)
@@ -334,6 +346,32 @@ def main():
         if cat_summary:
             st.markdown("#### Categorical Variables (Frequency & Modes)")
             st.dataframe(pd.DataFrame(cat_summary), use_container_width=True)
+
+        cat_card_summary = analysis.categorical.get("summary_table", [])
+        if cat_card_summary:
+            st.markdown("#### Categorical Class Distribution & Balance")
+            st.dataframe(pd.DataFrame([
+                {
+                    "column_name": r["column_name"],
+                    "valid_count": r["valid_count"],
+                    "unique_categories": r["unique_categories"],
+                    "mode_category": r["mode_category"],
+                    "mode_frequency": r["mode_frequency"],
+                    "mode_percentage": f"{r['mode_percentage']}%",
+                    "rare_categories_count": r["rare_categories_count"],
+                    "is_imbalanced": "⚠️ Yes (≥70%)" if r["is_imbalanced"] else "Balanced",
+                    "is_high_cardinality": "⚠️ Yes (>30)" if r["is_high_cardinality"] else "No"
+                }
+                for r in cat_card_summary
+            ]), use_container_width=True)
+
+            if analysis.categorical.get("imbalanced_columns"):
+                for imb in analysis.categorical["imbalanced_columns"]:
+                    st.warning(
+                        f"Severe class imbalance in '{imb['column']}': Dominant mode '{imb['dominant_category']}' "
+                        f"accounts for {imb['percentage']}% of records.",
+                        icon="⚠️"
+                    )
 
     # TAB 4: MISSING VALUES
     with tabs[3]:

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoEDA Report - scenario_c_customer_dirty.csv</title>
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --danger: #EF4444;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 30px 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      color: white;
+      padding: 32px 36px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    header p { opacity: 0.9; font-size: 15px; }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-info { background: #E0E7FF; color: #3730A3; }
+    .badge-warning { background: #FEF3C7; color: #92400E; }
+    .badge-important { background: #FEE2E2; color: #991B1B; }
+    .badge-success { background: #DCFCE7; color: #166534; }
+    
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);
+    }
+    .card h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #F1F5F9;
+      padding-bottom: 10px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .metric-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+    .metric-value { font-size: 26px; font-weight: 700; color: var(--primary); }
+    .metric-label { font-size: 13px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13.5px;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #F8FAFC;
+      color: #475569;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11.5px;
+      letter-spacing: 0.05em;
+    }
+    tr:hover { background-color: #F8FAFC; }
+    
+    .insight-item {
+      padding: 14px 18px;
+      border-radius: 6px;
+      border-left: 4px solid var(--primary);
+      background: #F8FAFC;
+      margin-bottom: 12px;
+    }
+    .insight-item.warning { border-left-color: var(--warning); background: #FFFBEB; }
+    .insight-item.important { border-left-color: var(--danger); background: #FEF2F2; }
+    .insight-title { font-weight: 600; font-size: 14.5px; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
+    .insight-body { font-size: 13.5px; color: #334155; }
+    .insight-basis { font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+    
+    .rec-item {
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .rec-header { font-weight: 600; font-size: 14.5px; color: #1E293B; margin-bottom: 4px; }
+    .rec-action { font-weight: 600; color: var(--primary); margin-top: 6px; font-size: 13.5px; }
+
+    .chart-container { margin: 20px 0; }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AutoEDA — Automated Exploratory Data Analysis Report</h1>
+      <p>Dataset: <strong>scenario_c_customer_dirty.csv</strong> | Generated on 2026-11-21 22:16:03 | Engine Version 2.0.0</p>
+    </header>
+
+    <!-- Overview Metrics -->
+    <div class="card">
+      <h2>1. Dataset Executive Summary</h2>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-value">425</div>
+          <div class="metric-label">Total Observations</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">7</div>
+          <div class="metric-label">Total Features</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">35.55 KB</div>
+          <div class="metric-label">Memory Footprint</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">18.22%</div>
+          <div class="metric-label">Total Missingness</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">25 (5.88%)</div>
+          <div class="metric-label">Duplicate Rows</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">83.2 / 100</div>
+          <div class="metric-label">Quality Score (Grade B)</div>
+        </div>
+      </div>
+      <p style="font-size: 13.5px; color: var(--text-muted);">
+        Semantic Composition: 
+        
+          <strong>2</strong> numerical, 
+        
+          <strong>2</strong> categorical, 
+        
+          <strong>1</strong> datetime, 
+        
+          <strong>1</strong> identifier, 
+        
+          <strong>1</strong> unsupported
+        
+      </p>
+    </div>
+
+    <!-- Data Quality -->
+    <div class="card">
+      <h2>2. Data Quality & Hygiene Assessment</h2>
+      <p style="margin-bottom: 12px; font-size: 14px;">Overall Score: <strong>83.2 / 100 (Good)</strong></p>
+      
+      
+      <div class="chart-container">
+        <div style="height:280px; width:100%;">                            <div id="53fc9849-4751-4c36-908c-eaa6e65a063e" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("53fc9849-4751-4c36-908c-eaa6e65a063e")) {                    Plotly.newPlot(                        "53fc9849-4751-4c36-908c-eaa6e65a063e",                        [{"domain":{"x":[0,1],"y":[0,1]},"gauge":{"axis":{"range":[0,100],"tickcolor":"#94A3B8","tickwidth":1},"bar":{"color":"#2563EB","thickness":0.28},"bgcolor":"#F1F5F9","bordercolor":"#E2E8F0","borderwidth":1,"steps":[{"color":"#FEE2E2","range":[0,50]},{"color":"#FEF3C7","range":[50,75]},{"color":"#E0E7FF","range":[75,90]},{"color":"#DCFCE7","range":[90,100]}],"threshold":{"line":{"color":"#10B981","width":4},"thickness":0.75,"value":83.2}},"mode":"gauge+number","number":{"font":{"color":"#0F172A","size":36},"suffix":"\u002f100"},"title":{"font":{"color":"#1E293B","size":20},"text":"Data Quality Health Index (Grade B)"},"value":83.2,"type":"indicator"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"margin":{"l":25,"r":25,"t":60,"b":25},"height":280},                        {"responsive": true}                    )                };            </script>        </div>
+      </div>
+      
+
+      <div style="margin-top: 16px;">
+        <h4 style="font-size: 14px; margin-bottom: 6px;">Identified Hygiene Issues:</h4>
+        <ul style="margin-left: 20px; font-size: 13.5px;">
+          
+            <li>1 column(s) are completely empty: [&#39;empty_notes_column&#39;]</li>
+          
+            <li>1 column(s) contain only one constant value: [&#39;uninformative_status&#39;]</li>
+          
+            <li>Found 25 duplicate rows (5.88%).</li>
+          
+            <li>542 total missing cells (18.22% of dataset).</li>
+          
+        </ul>
+      </div>
+
+      <div style="margin-top: 14px;">
+        <h4 style="font-size: 14px; margin-bottom: 6px;">Suggested Data Cleanliness Actions:</h4>
+        <ul style="margin-left: 20px; font-size: 13.5px; color: #15803D;">
+          
+            <li>Remove completely empty columns ([&#39;empty_notes_column&#39;]) to save memory and avoid model errors.</li>
+          
+            <li>Evaluate removing constant column(s) ([&#39;uninformative_status&#39;]) as they carry zero informational variance.</li>
+          
+            <li>Verify if duplicate rows represent repeated transactions or ingestion glitches before deduplication.</li>
+          
+            <li>Apply appropriate numerical (median/mean) or categorical (mode/Unknown) imputation.</li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <!-- Intelligent Insights -->
+    <div class="card">
+      <h2>3. Automated Statistical Insights</h2>
+      
+        
+          <h3 style="font-size: 16px; margin: 16px 0 8px 0; color: #334155; text-transform: capitalize;">overview</h3>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>Dataset Scale and Ingestion Profile</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">The dataset contains 425 rows and 7 columns, occupying approximately 35.55 KB of system memory.</div>
+              <div class="insight-basis">Basis: Calculated exact shape (425, 7) and deep memory footprint.</div>
+            </div>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>Semantic Type Distribution</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">Identified column distribution: 2 numerical, 2 categorical, 1 datetime, 1 identifier, 1 unsupported.</div>
+              <div class="insight-basis">Basis: Conservative semantic type classification heuristic.</div>
+            </div>
+          
+            <div class="insight-item warning">
+              <div class="insight-title">
+                <span>Zero-Variance Columns Detected</span>
+                <span class="badge badge-warning">warning</span>
+              </div>
+              <div class="insight-body">Columns [&#39;uninformative_status&#39;] exhibit zero variance (all non-null values are identical). These columns contribute zero discriminating power to machine learning models.</div>
+              <div class="insight-basis">Basis: Unique non-null count is 1 for columns: [&#39;uninformative_status&#39;].</div>
+            </div>
+          
+        
+      
+        
+          <h3 style="font-size: 16px; margin: 16px 0 8px 0; color: #334155; text-transform: capitalize;">data quality</h3>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>Overall Health Rating: Grade B (83.2/100 - Good)</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">The dataset scored 83.2/100 on the automated hygiene index. Completeness is 81.78%, Uniqueness is 94.12%, and Structural Consistency is 75.0%.</div>
+              <div class="insight-basis">Basis: Weighted composite formula: 50% Completeness + 25% Uniqueness + 25% Structural Consistency.</div>
+            </div>
+          
+            <div class="insight-item warning">
+              <div class="insight-title">
+                <span>Duplicate Rows Present</span>
+                <span class="badge badge-warning">warning</span>
+              </div>
+              <div class="insight-body">Detected 25 duplicate records representing 5.88% of the dataset.</div>
+              <div class="insight-basis">Basis: Exact DataFrame row-level duplicate match count: 25.</div>
+            </div>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>Minor Missingness Detected</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">Dataset has 542 missing values (18.22% overall cell sparsity).</div>
+              <div class="insight-basis">Basis: Missing cell summation across all features.</div>
+            </div>
+          
+        
+      
+        
+          <h3 style="font-size: 16px; margin: 16px 0 8px 0; color: #334155; text-transform: capitalize;">numerical patterns</h3>
+          
+            <div class="insight-item warning">
+              <div class="insight-title">
+                <span>Strong Positive Skewness in &#39;total_spending&#39;</span>
+                <span class="badge badge-warning">warning</span>
+              </div>
+              <div class="insight-body">Feature &#39;total_spending&#39; exhibits significant right-skew (skewness = 1.78). The tail extends towards higher values; consider log, square root, or Box-Cox transformations for linear models.</div>
+              <div class="insight-basis">Basis: Fisher-Pearson skewness coefficient (1.78) &gt; 1.5.</div>
+            </div>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>Leptokurtic (Heavy-Tailed) Distribution in &#39;total_spending&#39;</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">Feature &#39;total_spending&#39; has excess kurtosis of 3.78, indicating heavy tails and a sharp peak compared to normal distributions.</div>
+              <div class="insight-basis">Basis: Excess kurtosis (3.78) &gt; 3.0.</div>
+            </div>
+          
+        
+      
+        
+      
+        
+          <h3 style="font-size: 16px; margin: 16px 0 8px 0; color: #334155; text-transform: capitalize;">relationships</h3>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>No Severe Multicollinearity Detected</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">All evaluated numerical feature pairs show correlation coefficients below |0.70|.</div>
+              <div class="insight-basis">Basis: Exhaustive pairwise Pearson correlation matrix evaluation.</div>
+            </div>
+          
+        
+      
+        
+          <h3 style="font-size: 16px; margin: 16px 0 8px 0; color: #334155; text-transform: capitalize;">anomalies</h3>
+          
+            <div class="insight-item info">
+              <div class="insight-title">
+                <span>Tukey IQR Outliers in &#39;total_spending&#39;</span>
+                <span class="badge badge-info">info</span>
+              </div>
+              <div class="insight-body">Detected 16 potential outlier records (4.28% of column) in &#39;total_spending&#39; outside the range [-223.65, 480.13].</div>
+              <div class="insight-basis">Basis: Values outside Q1 - 1.5*IQR and Q3 + 1.5*IQR (IQR = 175.94).</div>
+            </div>
+          
+            <div class="insight-item important">
+              <div class="insight-title">
+                <span>Multivariate Anomalies via Isolation Forest</span>
+                <span class="badge badge-important">important</span>
+              </div>
+              <div class="insight-body">Isolation Forest flagged 22 observations (5.18% of dataset) as multivariate anomalies across 2 numerical dimensions.</div>
+              <div class="insight-basis">Basis: Unsupervised Isolation Forest ensemble (contamination parameter = 0.05).</div>
+            </div>
+          
+        
+      
+    </div>
+
+    <!-- Column Profiling -->
+    <div class="card">
+      <h2>4. Feature Profiling Table</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature Name</th>
+              <th>Raw Dtype</th>
+              <th>Semantic Type</th>
+              <th>Missing Count</th>
+              <th>Missing %</th>
+              <th>Unique Vals</th>
+              <th>Properties</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td><strong>customer_id</strong></td>
+              <td><code>str</code></td>
+              <td><span class="badge badge-info">identifier</span></td>
+              <td>0</td>
+              <td>0.0%</td>
+              <td>400</td>
+              <td>
+                
+                
+                
+                -
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>signup_date</strong></td>
+              <td><code>str</code></td>
+              <td><span class="badge badge-info">datetime</span></td>
+              <td>0</td>
+              <td>0.0%</td>
+              <td>400</td>
+              <td>
+                
+                
+                
+                -
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>region</strong></td>
+              <td><code>str</code></td>
+              <td><span class="badge badge-info">categorical</span></td>
+              <td>32</td>
+              <td>7.53%</td>
+              <td>4</td>
+              <td>
+                
+                
+                
+                -
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>rating</strong></td>
+              <td><code>float64</code></td>
+              <td><span class="badge badge-info">numerical</span></td>
+              <td>34</td>
+              <td>8.0%</td>
+              <td>5</td>
+              <td>
+                
+                
+                
+                -
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>total_spending</strong></td>
+              <td><code>float64</code></td>
+              <td><span class="badge badge-info">numerical</span></td>
+              <td>51</td>
+              <td>12.0%</td>
+              <td>349</td>
+              <td>
+                
+                
+                
+                -
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>empty_notes_column</strong></td>
+              <td><code>float64</code></td>
+              <td><span class="badge badge-info">unsupported</span></td>
+              <td>425</td>
+              <td>100.0%</td>
+              <td>0</td>
+              <td>
+                
+                <span class="badge badge-important">All Null</span>
+                
+                
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>uninformative_status</strong></td>
+              <td><code>str</code></td>
+              <td><span class="badge badge-info">categorical</span></td>
+              <td>0</td>
+              <td>0.0%</td>
+              <td>1</td>
+              <td>
+                <span class="badge badge-warning">Constant</span>
+                
+                
+                
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Numerical Statistics -->
+    
+    <div class="card">
+      <h2>5. Numerical Feature Statistics</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Count</th>
+              <th>Mean</th>
+              <th>Std Dev</th>
+              <th>Min</th>
+              <th>Q25</th>
+              <th>Median</th>
+              <th>Q75</th>
+              <th>Max</th>
+              <th>IQR</th>
+              <th>Skewness</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td><strong>rating</strong></td>
+              <td>391</td>
+              <td>3.1867</td>
+              <td>1.2125</td>
+              <td>1.0</td>
+              <td>2.0</td>
+              <td>3.0</td>
+              <td>4.0</td>
+              <td>5.0</td>
+              <td>2.0</td>
+              <td>-0.1716</td>
+            </tr>
+            
+            <tr>
+              <td><strong>total_spending</strong></td>
+              <td>374</td>
+              <td>147.7579</td>
+              <td>147.3602</td>
+              <td>0.06</td>
+              <td>40.2675</td>
+              <td>96.305</td>
+              <td>216.2125</td>
+              <td>828.7</td>
+              <td>175.945</td>
+              <td>1.7836</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+
+    <!-- Categorical Statistics & Balance -->
+    
+    <div class="card">
+      <h2>6. Categorical Feature Analysis & Class Balance</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Valid Obs</th>
+              <th>Distinct Classes</th>
+              <th>Dominant Mode</th>
+              <th>Mode Frequency</th>
+              <th>Mode %</th>
+              <th>Rare Classes (&lt;1%)</th>
+              <th>Distribution Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td><strong>uninformative_status</strong></td>
+              <td>425</td>
+              <td>1</td>
+              <td><code>Active</code></td>
+              <td>425</td>
+              <td>100.0%</td>
+              <td>0</td>
+              <td>
+                <span class="badge badge-warning">Imbalanced (&ge;70%)</span>
+                
+                
+              </td>
+            </tr>
+            
+            <tr>
+              <td><strong>region</strong></td>
+              <td>393</td>
+              <td>4</td>
+              <td><code>South</code></td>
+              <td>115</td>
+              <td>29.26%</td>
+              <td>0</td>
+              <td>
+                
+                
+                <span class="badge badge-success">Balanced</span>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+
+    <!-- Missing Values -->
+    
+    <div class="card">
+      <h2>7. Missingness Analysis</h2>
+      <p style="font-size: 14px; margin-bottom: 12px;">
+        Total Missing Cells: <strong>542</strong> 
+        (18.22% of dataset). 
+        Rows affected: <strong>425</strong> (100.0%).
+      </p>
+      
+      <div class="chart-container">
+        <div style="height:380px; width:100%;">                            <div id="d3aa5a91-8780-490a-b0a3-c53e55b7d13a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("d3aa5a91-8780-490a-b0a3-c53e55b7d13a")) {                    Plotly.newPlot(                        "d3aa5a91-8780-490a-b0a3-c53e55b7d13a",                        [{"hovertemplate":"\u003cb\u003e%{x}\u003c\u002fb\u003e\u003cbr\u003eMissing: %{y:.2f}%\u003cbr\u003eCount: %{text}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#EF4444","line":{"color":"#B91C1C","width":1}},"text":["100.0% (425)","12.0% (51)","8.0% (34)","7.5% (32)"],"textposition":"outside","x":["empty_notes_column","total_spending","rating","region"],"y":[100.0,12.0,8.0,7.53],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"yaxis":{"title":{"text":"Missingness Percentage (%)"},"range":[0,123.0]},"margin":{"l":40,"r":20,"t":50,"b":60},"title":{"text":"Missing Values by Feature (% of Total Observations)"},"xaxis":{"title":{"text":"Column"}},"height":380},                        {"responsive": true}                    )                };            </script>        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Outlier Detection -->
+    
+    <div class="card">
+      <h2>8. Outlier & Anomaly Analysis</h2>
+      <p style="font-size: 14px; margin-bottom: 12px;">
+        Statistical detection via Tukey's IQR Method (1.5x Multiplier). 
+        Features with outliers: <strong>1</strong>.
+      </p>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Valid Obs</th>
+              <th>IQR</th>
+              <th>Lower Bound</th>
+              <th>Upper Bound</th>
+              <th>Outlier Count</th>
+              <th>Outlier %</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td><strong>total_spending</strong></td>
+              <td>374</td>
+              <td>175.945</td>
+              <td>-223.65</td>
+              <td>480.13</td>
+              <td>16</td>
+              <td>4.28%</td>
+            </tr>
+            
+            <tr>
+              <td><strong>rating</strong></td>
+              <td>391</td>
+              <td>2.0</td>
+              <td>-1.0</td>
+              <td>7.0</td>
+              <td>0</td>
+              <td>0.0%</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="margin-top: 16px; background: #F8FAFC; padding: 14px; border-radius: 6px;">
+        <h4 style="font-size: 14px;">Multivariate Anomaly Detection (Isolation Forest)</h4>
+        <p style="font-size: 13.5px; color: var(--text-muted);">
+          Flagged <strong>22</strong> records 
+          (5.18% of dataset) as potential multivariate outliers.
+        </p>
+      </div>
+      
+    </div>
+    
+
+    <!-- Correlation Analysis -->
+    
+    <div class="card">
+      <h2>9. Correlation & Relationship Analysis</h2>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">Statistical Note: High correlation indicates an empirical linear or monotonic association. It does not prove or imply a cause-and-effect relationship.</p>
+      
+      <div class="chart-container">
+        <div style="height:450px; width:500px;">                            <div id="0f359df8-2cdc-4aaa-b7dd-ce482c18d628" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("0f359df8-2cdc-4aaa-b7dd-ce482c18d628")) {                    Plotly.newPlot(                        "0f359df8-2cdc-4aaa-b7dd-ce482c18d628",                        [{"colorbar":{"thickness":15,"title":{"text":"Pearson r"}},"colorscale":[[0.0,"rgb(5,48,97)"],[0.1,"rgb(33,102,172)"],[0.2,"rgb(67,147,195)"],[0.3,"rgb(146,197,222)"],[0.4,"rgb(209,229,240)"],[0.5,"rgb(247,247,247)"],[0.6,"rgb(253,219,199)"],[0.7,"rgb(244,165,130)"],[0.8,"rgb(214,96,77)"],[0.9,"rgb(178,24,43)"],[1.0,"rgb(103,0,31)"]],"hoverongaps":false,"text":[["1.0","-0.01"],["-0.01","1.0"]],"texttemplate":"%{text}","x":["rating","total_spending"],"y":["rating","total_spending"],"z":{"dtype":"f8","bdata":"AAAAAAAA8D+sidUS0CWEv6yJ1RLQJYS\u002fAAAAAAAA8D8=","shape":"2, 2"},"zmax":1.0,"zmin":-1.0,"type":"heatmap"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"margin":{"l":60,"r":40,"t":60,"b":60},"title":{"text":"Pearson Correlation Heatmap"},"height":450,"width":500},                        {"responsive": true}                    )                };            </script>        </div>
+      </div>
+      
+      
+      
+      <h4 style="font-size: 14px; margin: 16px 0 8px 0;">Top Correlated Feature Pairs:</h4>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature A</th>
+              <th>Feature B</th>
+              <th>Pearson r</th>
+              <th>Spearman &rho;</th>
+              <th>Strength</th>
+              <th>Direction</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td><strong>rating</strong></td>
+              <td><strong>total_spending</strong></td>
+              <td>-0.0098</td>
+              <td>-0.0078</td>
+              <td>Weak</td>
+              <td>Negative</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+    
+
+    <!-- Preprocessing Recommendations -->
+    
+    <div class="card">
+      <h2>10. Preprocessing & Data Preparation Recipes</h2>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">
+        Actionable guidance tailored to the empirical distribution and structural hygiene of this dataset:
+      </p>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-important">
+            High
+          </span>
+          <span style="margin-left: 8px;"><strong>Missing Data:</strong> Column &#39;empty_notes_column&#39; is completely empty (100% missing values).</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Empty columns contain zero information and cause training failures in ML estimators.</div>
+        <div class="rec-action">&rarr; Recommended Action: Drop column &#39;empty_notes_column&#39; from the feature matrix before model ingestion.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-warning">
+            Medium
+          </span>
+          <span style="margin-left: 8px;"><strong>Missing Data:</strong> Numerical column &#39;total_spending&#39; has 12.0% missing values.</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Most standard machine learning models cannot process NaN values directly.</div>
+        <div class="rec-action">&rarr; Recommended Action: Apply median imputation (robust to distributional skew) using SimpleImputer or domain-specific baseline.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-warning">
+            Medium
+          </span>
+          <span style="margin-left: 8px;"><strong>Missing Data:</strong> Numerical column &#39;rating&#39; has 8.0% missing values.</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Most standard machine learning models cannot process NaN values directly.</div>
+        <div class="rec-action">&rarr; Recommended Action: Apply mean or median imputation using SimpleImputer or domain-specific baseline.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-warning">
+            Medium
+          </span>
+          <span style="margin-left: 8px;"><strong>Missing Data:</strong> Categorical column &#39;region&#39; has 7.53% missing values.</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Missing categorical entries can cause inference errors or missing class labels.</div>
+        <div class="rec-action">&rarr; Recommended Action: Impute with the most frequent value (mode) or create an explicit &#39;Unknown&#39; category.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-important">
+            High
+          </span>
+          <span style="margin-left: 8px;"><strong>Deduplication:</strong> Found 25 duplicate records (5.88% of total dataset).</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Unintentional duplicates overweight identical data points, biasing training and inflating evaluation metrics through train-test data leakage.</div>
+        <div class="rec-action">&rarr; Recommended Action: Inspect duplicate rows to verify validity. If uninformative duplicates, apply `df.drop_duplicates()`.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-important">
+            High
+          </span>
+          <span style="margin-left: 8px;"><strong>Feature Selection:</strong> Zero-variance constant columns detected: [&#39;uninformative_status&#39;].</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Constant features provide zero mathematical information and cause singularity in linear models.</div>
+        <div class="rec-action">&rarr; Recommended Action: Remove [&#39;uninformative_status&#39;] using `VarianceThreshold(threshold=0.0)` or drop manually.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-important">
+            High
+          </span>
+          <span style="margin-left: 8px;"><strong>Feature Selection:</strong> High-cardinality identifier columns detected: [&#39;customer_id&#39;].</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Identifiers (IDs, keys, hashes) carry no generalizable pattern and can cause extreme overfitting.</div>
+        <div class="rec-action">&rarr; Recommended Action: Exclude [&#39;customer_id&#39;] from model training features (retain solely for index lookup or tracking).</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-warning">
+            Medium
+          </span>
+          <span style="margin-left: 8px;"><strong>Feature Scaling:</strong> Significant scale disparity detected across 2 numerical features (e.g. ranges differ by &gt;50x).</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Distance-based algorithms (KNN, SVM, K-Means) and gradient-based models (Neural Nets, Logistic Regression) are sensitive to feature magnitudes.</div>
+        <div class="rec-action">&rarr; Recommended Action: Apply RobustScaler (IQR-based, resistant to outliers) before fitting distance- or gradient-based models.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-info">
+            Low
+          </span>
+          <span style="margin-left: 8px;"><strong>Feature Transformation:</strong> Substantial distributional skewness in 1 column(s): [&#39;total_spending&#39;].</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Parametric linear algorithms assume symmetric, near-normal residual errors.</div>
+        <div class="rec-action">&rarr; Recommended Action: Evaluate `np.log1p()`, `PowerTransformer(method=&#39;yeo-johnson&#39;)`, or quantile transformations.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-warning">
+            Medium
+          </span>
+          <span style="margin-left: 8px;"><strong>Categorical Encoding:</strong> Low-cardinality categorical features (&lt;= 10 categories): [&#39;region&#39;, &#39;uninformative_status&#39;].</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Non-numeric categories must be vectorized into machine-readable numeric matrices.</div>
+        <div class="rec-action">&rarr; Recommended Action: Apply `OneHotEncoder(drop=&#39;first&#39;, sparse_output=False)` to prevent dummy variable trap.</div>
+      </div>
+      
+      <div class="rec-item">
+        <div class="rec-header">
+          <span class="badge badge-warning">
+            Medium
+          </span>
+          <span style="margin-left: 8px;"><strong>Outlier Treatment:</strong> Tukey IQR outliers present in 1 feature(s): [&#39;total_spending&#39;].</span>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; margin: 4px 0;"><strong>Why it matters:</strong> Extreme outliers can distort mean, standard deviation, and regression coefficients. However, outliers may represent legitimate high-value transactions or edge conditions.</div>
+        <div class="rec-action">&rarr; Recommended Action: Do NOT delete rows blindly. Consider Winsorization (clipping at 1st and 99th percentiles) or utilize tree-based ensembles (Random Forest, LightGBM) that are inherently robust to monotonic outliers.</div>
+      </div>
+      
+    </div>
+    
+
+    <footer>
+      <p>AutoEDA — Advanced Automated Exploratory Data Analysis System</p>
+      <p>Developed with Python, Streamlit, Pandas, SciPy, and Plotly. Offline Analysis Engine.</p>
+    </footer>
+  </div>
+</body>
+</html>

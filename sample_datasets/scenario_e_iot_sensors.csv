@@ -1,0 +1,301 @@
+sensor_uuid,timestamp,ambient_temperature,is_alert,log_message,http_status_code
+uuid-000-sensor,2024-03-01 00:00:00,23.71,False,Normal operation cycle completed without warnings,200
+uuid-001-sensor,2024-03-01 00:15:00,29.41,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-002-sensor,2024-03-01 00:30:00,17.91,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-003-sensor,2024-03-01 00:45:00,23.45,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-004-sensor,2024-03-01 01:00:00,26.84,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-005-sensor,2024-03-01 01:15:00,24.4,False,Warning: Temperature threshold exceeded minor boundary,400
+uuid-006-sensor,2024-03-01 01:30:00,20.94,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-007-sensor,2024-03-01 01:45:00,22.97,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-008-sensor,2024-03-01 02:00:00,25.47,False,Normal operation cycle completed without warnings,200
+uuid-009-sensor,2024-03-01 02:15:00,23.52,False,Packet loss detected on wireless sensor gateway port 8080,500
+uuid-0010-sensor,2024-03-01 02:30:00,24.35,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0011-sensor,2024-03-01 02:45:00,24.44,False,Normal operation cycle completed without warnings,200
+uuid-0012-sensor,2024-03-01 03:00:00,22.82,True,Normal operation cycle completed without warnings,400
+uuid-0013-sensor,2024-03-01 03:15:00,27.11,False,Normal operation cycle completed without warnings,200
+uuid-0014-sensor,2024-03-01 03:30:00,22.97,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0015-sensor,2024-03-01 03:45:00,21.28,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-0016-sensor,2024-03-01 04:00:00,31.63,False,Warning: Temperature threshold exceeded minor boundary,500
+uuid-0017-sensor,2024-03-01 04:15:00,24.25,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0018-sensor,2024-03-01 04:30:00,16.18,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-0019-sensor,2024-03-01 04:45:00,28.52,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0020-sensor,2024-03-01 05:00:00,28.5,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0021-sensor,2024-03-01 05:15:00,25.96,False,Warning: Temperature threshold exceeded minor boundary,400
+uuid-0022-sensor,2024-03-01 05:30:00,26.52,True,Sensor recalibration routine initiated by telemetry service,500
+uuid-0023-sensor,2024-03-01 05:45:00,31.41,True,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0024-sensor,2024-03-01 06:00:00,21.42,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0025-sensor,2024-03-01 06:15:00,24.93,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0026-sensor,2024-03-01 06:30:00,30.8,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0027-sensor,2024-03-01 06:45:00,31.48,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0028-sensor,2024-03-01 07:00:00,23.33,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0029-sensor,2024-03-01 07:15:00,30.93,False,Normal operation cycle completed without warnings,200
+uuid-0030-sensor,2024-03-01 07:30:00,27.07,False,Normal operation cycle completed without warnings,200
+uuid-0031-sensor,2024-03-01 07:45:00,29.28,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0032-sensor,2024-03-01 08:00:00,26.96,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-0033-sensor,2024-03-01 08:15:00,25.48,False,Normal operation cycle completed without warnings,200
+uuid-0034-sensor,2024-03-01 08:30:00,31.57,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0035-sensor,2024-03-01 08:45:00,22.81,True,Normal operation cycle completed without warnings,201
+uuid-0036-sensor,2024-03-01 09:00:00,30.59,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0037-sensor,2024-03-01 09:15:00,31.09,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0038-sensor,2024-03-01 09:30:00,28.86,True,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0039-sensor,2024-03-01 09:45:00,24.27,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0040-sensor,2024-03-01 10:00:00,25.28,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0041-sensor,2024-03-01 10:15:00,20.42,True,Normal operation cycle completed without warnings,201
+uuid-0042-sensor,2024-03-01 10:30:00,23.05,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0043-sensor,2024-03-01 10:45:00,26.49,False,Normal operation cycle completed without warnings,200
+uuid-0044-sensor,2024-03-01 11:00:00,19.93,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-0045-sensor,2024-03-01 11:15:00,23.55,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0046-sensor,2024-03-01 11:30:00,30.72,False,Warning: Temperature threshold exceeded minor boundary,400
+uuid-0047-sensor,2024-03-01 11:45:00,24.01,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0048-sensor,2024-03-01 12:00:00,27.81,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0049-sensor,2024-03-01 12:15:00,26.31,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0050-sensor,2024-03-01 12:30:00,23.52,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0051-sensor,2024-03-01 12:45:00,24.0,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-0052-sensor,2024-03-01 13:00:00,25.03,False,Normal operation cycle completed without warnings,200
+uuid-0053-sensor,2024-03-01 13:15:00,17.94,False,Sensor recalibration routine initiated by telemetry service,400
+uuid-0054-sensor,2024-03-01 13:30:00,27.53,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0055-sensor,2024-03-01 13:45:00,24.12,False,Packet loss detected on wireless sensor gateway port 8080,400
+uuid-0056-sensor,2024-03-01 14:00:00,27.64,False,Normal operation cycle completed without warnings,201
+uuid-0057-sensor,2024-03-01 14:15:00,25.74,False,Normal operation cycle completed without warnings,200
+uuid-0058-sensor,2024-03-01 14:30:00,23.98,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0059-sensor,2024-03-01 14:45:00,25.13,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0060-sensor,2024-03-01 15:00:00,25.14,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0061-sensor,2024-03-01 15:15:00,29.22,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0062-sensor,2024-03-01 15:30:00,24.7,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0063-sensor,2024-03-01 15:45:00,25.42,False,Warning: Temperature threshold exceeded minor boundary,400
+uuid-0064-sensor,2024-03-01 16:00:00,20.46,False,Normal operation cycle completed without warnings,200
+uuid-0065-sensor,2024-03-01 16:15:00,24.35,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-0066-sensor,2024-03-01 16:30:00,29.15,False,Warning: Temperature threshold exceeded minor boundary,400
+uuid-0067-sensor,2024-03-01 16:45:00,25.87,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-0068-sensor,2024-03-01 17:00:00,21.04,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0069-sensor,2024-03-01 17:15:00,21.38,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0070-sensor,2024-03-01 17:30:00,22.13,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0071-sensor,2024-03-01 17:45:00,27.7,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0072-sensor,2024-03-01 18:00:00,27.3,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0073-sensor,2024-03-01 18:15:00,13.45,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-0074-sensor,2024-03-01 18:30:00,24.24,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0075-sensor,2024-03-01 18:45:00,24.97,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0076-sensor,2024-03-01 19:00:00,21.42,False,Packet loss detected on wireless sensor gateway port 8080,500
+uuid-0077-sensor,2024-03-01 19:15:00,23.25,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0078-sensor,2024-03-01 19:30:00,28.76,False,Normal operation cycle completed without warnings,200
+uuid-0079-sensor,2024-03-01 19:45:00,25.81,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-0080-sensor,2024-03-01 20:00:00,22.9,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0081-sensor,2024-03-01 20:15:00,23.9,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0082-sensor,2024-03-01 20:30:00,23.77,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0083-sensor,2024-03-01 20:45:00,25.4,True,Warning: Temperature threshold exceeded minor boundary,201
+uuid-0084-sensor,2024-03-01 21:00:00,19.92,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0085-sensor,2024-03-01 21:15:00,22.36,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0086-sensor,2024-03-01 21:30:00,27.81,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0087-sensor,2024-03-01 21:45:00,24.27,False,Normal operation cycle completed without warnings,200
+uuid-0088-sensor,2024-03-01 22:00:00,21.78,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0089-sensor,2024-03-01 22:15:00,21.91,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0090-sensor,2024-03-01 22:30:00,26.81,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0091-sensor,2024-03-01 22:45:00,22.84,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0092-sensor,2024-03-01 23:00:00,26.13,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0093-sensor,2024-03-01 23:15:00,22.49,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0094-sensor,2024-03-01 23:30:00,20.88,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-0095-sensor,2024-03-01 23:45:00,25.28,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-0096-sensor,2024-03-02 00:00:00,24.19,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-0097-sensor,2024-03-02 00:15:00,26.69,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-0098-sensor,2024-03-02 00:30:00,27.33,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-0099-sensor,2024-03-02 00:45:00,23.35,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00100-sensor,2024-03-02 01:00:00,25.62,False,Normal operation cycle completed without warnings,200
+uuid-00101-sensor,2024-03-02 01:15:00,23.26,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00102-sensor,2024-03-02 01:30:00,26.53,False,Normal operation cycle completed without warnings,200
+uuid-00103-sensor,2024-03-02 01:45:00,25.25,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00104-sensor,2024-03-02 02:00:00,22.5,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00105-sensor,2024-03-02 02:15:00,22.24,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00106-sensor,2024-03-02 02:30:00,25.36,False,Normal operation cycle completed without warnings,200
+uuid-00107-sensor,2024-03-02 02:45:00,28.22,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00108-sensor,2024-03-02 03:00:00,27.38,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00109-sensor,2024-03-02 03:15:00,21.48,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00110-sensor,2024-03-02 03:30:00,21.82,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00111-sensor,2024-03-02 03:45:00,22.29,False,Normal operation cycle completed without warnings,500
+uuid-00112-sensor,2024-03-02 04:00:00,22.59,True,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00113-sensor,2024-03-02 04:15:00,18.69,False,Normal operation cycle completed without warnings,201
+uuid-00114-sensor,2024-03-02 04:30:00,27.03,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-00115-sensor,2024-03-02 04:45:00,23.04,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00116-sensor,2024-03-02 05:00:00,25.98,False,Sensor recalibration routine initiated by telemetry service,400
+uuid-00117-sensor,2024-03-02 05:15:00,23.49,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00118-sensor,2024-03-02 05:30:00,24.43,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00119-sensor,2024-03-02 05:45:00,22.31,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00120-sensor,2024-03-02 06:00:00,24.41,False,Normal operation cycle completed without warnings,200
+uuid-00121-sensor,2024-03-02 06:15:00,21.71,False,Packet loss detected on wireless sensor gateway port 8080,500
+uuid-00122-sensor,2024-03-02 06:30:00,24.43,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00123-sensor,2024-03-02 06:45:00,29.16,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00124-sensor,2024-03-02 07:00:00,26.17,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00125-sensor,2024-03-02 07:15:00,25.43,True,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00126-sensor,2024-03-02 07:30:00,20.28,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00127-sensor,2024-03-02 07:45:00,26.32,False,Normal operation cycle completed without warnings,200
+uuid-00128-sensor,2024-03-02 08:00:00,26.63,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00129-sensor,2024-03-02 08:15:00,25.36,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00130-sensor,2024-03-02 08:30:00,25.19,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00131-sensor,2024-03-02 08:45:00,24.05,False,Normal operation cycle completed without warnings,500
+uuid-00132-sensor,2024-03-02 09:00:00,26.58,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-00133-sensor,2024-03-02 09:15:00,28.97,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00134-sensor,2024-03-02 09:30:00,25.56,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00135-sensor,2024-03-02 09:45:00,21.39,False,Normal operation cycle completed without warnings,200
+uuid-00136-sensor,2024-03-02 10:00:00,21.64,False,Packet loss detected on wireless sensor gateway port 8080,500
+uuid-00137-sensor,2024-03-02 10:15:00,26.82,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00138-sensor,2024-03-02 10:30:00,21.42,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00139-sensor,2024-03-02 10:45:00,25.14,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00140-sensor,2024-03-02 11:00:00,23.39,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00141-sensor,2024-03-02 11:15:00,21.07,False,Normal operation cycle completed without warnings,400
+uuid-00142-sensor,2024-03-02 11:30:00,27.16,False,Warning: Temperature threshold exceeded minor boundary,500
+uuid-00143-sensor,2024-03-02 11:45:00,26.76,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00144-sensor,2024-03-02 12:00:00,20.16,False,Packet loss detected on wireless sensor gateway port 8080,500
+uuid-00145-sensor,2024-03-02 12:15:00,26.04,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00146-sensor,2024-03-02 12:30:00,25.57,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00147-sensor,2024-03-02 12:45:00,27.18,False,Normal operation cycle completed without warnings,200
+uuid-00148-sensor,2024-03-02 13:00:00,25.03,False,Normal operation cycle completed without warnings,200
+uuid-00149-sensor,2024-03-02 13:15:00,29.07,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00150-sensor,2024-03-02 13:30:00,24.09,False,Normal operation cycle completed without warnings,201
+uuid-00151-sensor,2024-03-02 13:45:00,23.63,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00152-sensor,2024-03-02 14:00:00,21.38,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00153-sensor,2024-03-02 14:15:00,21.51,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00154-sensor,2024-03-02 14:30:00,21.22,True,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00155-sensor,2024-03-02 14:45:00,25.2,False,Normal operation cycle completed without warnings,200
+uuid-00156-sensor,2024-03-02 15:00:00,23.64,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00157-sensor,2024-03-02 15:15:00,25.56,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00158-sensor,2024-03-02 15:30:00,20.63,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-00159-sensor,2024-03-02 15:45:00,21.76,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00160-sensor,2024-03-02 16:00:00,21.71,False,Normal operation cycle completed without warnings,201
+uuid-00161-sensor,2024-03-02 16:15:00,31.44,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00162-sensor,2024-03-02 16:30:00,23.97,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00163-sensor,2024-03-02 16:45:00,24.29,False,Normal operation cycle completed without warnings,201
+uuid-00164-sensor,2024-03-02 17:00:00,24.25,False,Normal operation cycle completed without warnings,200
+uuid-00165-sensor,2024-03-02 17:15:00,29.47,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00166-sensor,2024-03-02 17:30:00,19.34,True,Normal operation cycle completed without warnings,200
+uuid-00167-sensor,2024-03-02 17:45:00,24.31,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00168-sensor,2024-03-02 18:00:00,19.31,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00169-sensor,2024-03-02 18:15:00,16.88,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00170-sensor,2024-03-02 18:30:00,22.15,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00171-sensor,2024-03-02 18:45:00,25.82,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00172-sensor,2024-03-02 19:00:00,21.95,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00173-sensor,2024-03-02 19:15:00,25.77,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-00174-sensor,2024-03-02 19:30:00,24.84,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00175-sensor,2024-03-02 19:45:00,24.05,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00176-sensor,2024-03-02 20:00:00,28.55,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00177-sensor,2024-03-02 20:15:00,22.59,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00178-sensor,2024-03-02 20:30:00,25.72,False,Normal operation cycle completed without warnings,200
+uuid-00179-sensor,2024-03-02 20:45:00,18.73,False,Normal operation cycle completed without warnings,200
+uuid-00180-sensor,2024-03-02 21:00:00,24.82,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00181-sensor,2024-03-02 21:15:00,23.68,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00182-sensor,2024-03-02 21:30:00,20.72,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00183-sensor,2024-03-02 21:45:00,25.78,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00184-sensor,2024-03-02 22:00:00,22.14,False,Normal operation cycle completed without warnings,200
+uuid-00185-sensor,2024-03-02 22:15:00,30.04,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00186-sensor,2024-03-02 22:30:00,16.71,True,Sensor recalibration routine initiated by telemetry service,201
+uuid-00187-sensor,2024-03-02 22:45:00,25.29,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00188-sensor,2024-03-02 23:00:00,24.64,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00189-sensor,2024-03-02 23:15:00,23.6,False,Normal operation cycle completed without warnings,201
+uuid-00190-sensor,2024-03-02 23:30:00,22.81,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-00191-sensor,2024-03-02 23:45:00,24.72,False,Normal operation cycle completed without warnings,201
+uuid-00192-sensor,2024-03-03 00:00:00,27.9,False,Normal operation cycle completed without warnings,200
+uuid-00193-sensor,2024-03-03 00:15:00,19.15,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00194-sensor,2024-03-03 00:30:00,21.92,False,Normal operation cycle completed without warnings,200
+uuid-00195-sensor,2024-03-03 00:45:00,21.14,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00196-sensor,2024-03-03 01:00:00,20.99,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00197-sensor,2024-03-03 01:15:00,25.6,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00198-sensor,2024-03-03 01:30:00,26.39,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00199-sensor,2024-03-03 01:45:00,27.91,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00200-sensor,2024-03-03 02:00:00,26.44,False,Normal operation cycle completed without warnings,201
+uuid-00201-sensor,2024-03-03 02:15:00,26.7,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00202-sensor,2024-03-03 02:30:00,19.98,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00203-sensor,2024-03-03 02:45:00,29.25,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00204-sensor,2024-03-03 03:00:00,23.83,True,Normal operation cycle completed without warnings,500
+uuid-00205-sensor,2024-03-03 03:15:00,27.81,True,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00206-sensor,2024-03-03 03:30:00,20.1,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00207-sensor,2024-03-03 03:45:00,23.73,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00208-sensor,2024-03-03 04:00:00,27.52,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00209-sensor,2024-03-03 04:15:00,24.59,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00210-sensor,2024-03-03 04:30:00,22.09,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00211-sensor,2024-03-03 04:45:00,28.69,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00212-sensor,2024-03-03 05:00:00,20.75,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00213-sensor,2024-03-03 05:15:00,24.43,False,Normal operation cycle completed without warnings,200
+uuid-00214-sensor,2024-03-03 05:30:00,26.55,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00215-sensor,2024-03-03 05:45:00,31.21,False,Normal operation cycle completed without warnings,200
+uuid-00216-sensor,2024-03-03 06:00:00,23.03,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00217-sensor,2024-03-03 06:15:00,23.62,False,Normal operation cycle completed without warnings,200
+uuid-00218-sensor,2024-03-03 06:30:00,23.08,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00219-sensor,2024-03-03 06:45:00,25.26,False,Normal operation cycle completed without warnings,200
+uuid-00220-sensor,2024-03-03 07:00:00,26.38,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00221-sensor,2024-03-03 07:15:00,28.0,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00222-sensor,2024-03-03 07:30:00,26.92,True,Normal operation cycle completed without warnings,201
+uuid-00223-sensor,2024-03-03 07:45:00,22.91,True,Normal operation cycle completed without warnings,200
+uuid-00224-sensor,2024-03-03 08:00:00,27.1,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00225-sensor,2024-03-03 08:15:00,24.79,False,Normal operation cycle completed without warnings,200
+uuid-00226-sensor,2024-03-03 08:30:00,26.88,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00227-sensor,2024-03-03 08:45:00,27.07,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00228-sensor,2024-03-03 09:00:00,29.72,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00229-sensor,2024-03-03 09:15:00,23.37,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00230-sensor,2024-03-03 09:30:00,22.75,False,Normal operation cycle completed without warnings,200
+uuid-00231-sensor,2024-03-03 09:45:00,25.93,False,Normal operation cycle completed without warnings,200
+uuid-00232-sensor,2024-03-03 10:00:00,28.28,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00233-sensor,2024-03-03 10:15:00,24.69,False,Packet loss detected on wireless sensor gateway port 8080,400
+uuid-00234-sensor,2024-03-03 10:30:00,28.49,False,Normal operation cycle completed without warnings,200
+uuid-00235-sensor,2024-03-03 10:45:00,26.71,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00236-sensor,2024-03-03 11:00:00,23.86,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00237-sensor,2024-03-03 11:15:00,26.3,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00238-sensor,2024-03-03 11:30:00,23.11,False,Normal operation cycle completed without warnings,200
+uuid-00239-sensor,2024-03-03 11:45:00,25.26,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00240-sensor,2024-03-03 12:00:00,21.07,False,Normal operation cycle completed without warnings,200
+uuid-00241-sensor,2024-03-03 12:15:00,24.28,True,Sensor recalibration routine initiated by telemetry service,200
+uuid-00242-sensor,2024-03-03 12:30:00,27.7,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00243-sensor,2024-03-03 12:45:00,26.95,False,Normal operation cycle completed without warnings,200
+uuid-00244-sensor,2024-03-03 13:00:00,26.49,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00245-sensor,2024-03-03 13:15:00,25.42,False,Warning: Temperature threshold exceeded minor boundary,500
+uuid-00246-sensor,2024-03-03 13:30:00,25.01,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00247-sensor,2024-03-03 13:45:00,20.45,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00248-sensor,2024-03-03 14:00:00,23.84,False,Normal operation cycle completed without warnings,200
+uuid-00249-sensor,2024-03-03 14:15:00,25.08,False,Sensor recalibration routine initiated by telemetry service,400
+uuid-00250-sensor,2024-03-03 14:30:00,20.9,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00251-sensor,2024-03-03 14:45:00,18.89,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00252-sensor,2024-03-03 15:00:00,28.11,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00253-sensor,2024-03-03 15:15:00,24.66,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00254-sensor,2024-03-03 15:30:00,25.17,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00255-sensor,2024-03-03 15:45:00,26.28,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00256-sensor,2024-03-03 16:00:00,21.36,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00257-sensor,2024-03-03 16:15:00,23.21,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00258-sensor,2024-03-03 16:30:00,29.31,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00259-sensor,2024-03-03 16:45:00,22.94,False,Normal operation cycle completed without warnings,200
+uuid-00260-sensor,2024-03-03 17:00:00,23.65,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00261-sensor,2024-03-03 17:15:00,22.36,False,Packet loss detected on wireless sensor gateway port 8080,400
+uuid-00262-sensor,2024-03-03 17:30:00,22.13,True,Sensor recalibration routine initiated by telemetry service,201
+uuid-00263-sensor,2024-03-03 17:45:00,28.04,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00264-sensor,2024-03-03 18:00:00,16.57,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00265-sensor,2024-03-03 18:15:00,23.04,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00266-sensor,2024-03-03 18:30:00,25.22,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00267-sensor,2024-03-03 18:45:00,29.93,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00268-sensor,2024-03-03 19:00:00,20.87,False,Normal operation cycle completed without warnings,200
+uuid-00269-sensor,2024-03-03 19:15:00,20.32,False,Sensor recalibration routine initiated by telemetry service,400
+uuid-00270-sensor,2024-03-03 19:30:00,21.75,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00271-sensor,2024-03-03 19:45:00,26.75,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00272-sensor,2024-03-03 20:00:00,24.9,False,Normal operation cycle completed without warnings,200
+uuid-00273-sensor,2024-03-03 20:15:00,19.88,False,Sensor recalibration routine initiated by telemetry service,400
+uuid-00274-sensor,2024-03-03 20:30:00,24.82,False,Packet loss detected on wireless sensor gateway port 8080,400
+uuid-00275-sensor,2024-03-03 20:45:00,29.46,False,Sensor recalibration routine initiated by telemetry service,400
+uuid-00276-sensor,2024-03-03 21:00:00,25.35,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00277-sensor,2024-03-03 21:15:00,25.03,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00278-sensor,2024-03-03 21:30:00,25.22,False,Normal operation cycle completed without warnings,200
+uuid-00279-sensor,2024-03-03 21:45:00,25.83,False,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00280-sensor,2024-03-03 22:00:00,20.45,False,Normal operation cycle completed without warnings,200
+uuid-00281-sensor,2024-03-03 22:15:00,23.76,True,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00282-sensor,2024-03-03 22:30:00,23.92,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00283-sensor,2024-03-03 22:45:00,22.95,False,Warning: Temperature threshold exceeded minor boundary,201
+uuid-00284-sensor,2024-03-03 23:00:00,26.7,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00285-sensor,2024-03-03 23:15:00,22.47,False,Sensor recalibration routine initiated by telemetry service,201
+uuid-00286-sensor,2024-03-03 23:30:00,23.35,True,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00287-sensor,2024-03-03 23:45:00,20.47,False,Packet loss detected on wireless sensor gateway port 8080,201
+uuid-00288-sensor,2024-03-04 00:00:00,25.71,True,Warning: Temperature threshold exceeded minor boundary,200
+uuid-00289-sensor,2024-03-04 00:15:00,27.51,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00290-sensor,2024-03-04 00:30:00,23.34,False,Sensor recalibration routine initiated by telemetry service,200
+uuid-00291-sensor,2024-03-04 00:45:00,27.08,False,Normal operation cycle completed without warnings,200
+uuid-00292-sensor,2024-03-04 01:00:00,24.03,True,Normal operation cycle completed without warnings,200
+uuid-00293-sensor,2024-03-04 01:15:00,16.41,False,Normal operation cycle completed without warnings,200
+uuid-00294-sensor,2024-03-04 01:30:00,24.34,False,Warning: Temperature threshold exceeded minor boundary,500
+uuid-00295-sensor,2024-03-04 01:45:00,23.94,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00296-sensor,2024-03-04 02:00:00,24.83,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00297-sensor,2024-03-04 02:15:00,25.31,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00298-sensor,2024-03-04 02:30:00,22.31,False,Packet loss detected on wireless sensor gateway port 8080,200
+uuid-00299-sensor,2024-03-04 02:45:00,29.21,False,Sensor recalibration routine initiated by telemetry service,200
